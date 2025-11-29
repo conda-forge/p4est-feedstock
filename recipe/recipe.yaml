@@ -10,13 +10,13 @@ source:
   sha256: 0A1E912F3529999CA6D62FEE335D51F24B5650B586E95A03EF39EBF73936D7F4
 
 build:
-  number: 0
+  number: 1
   skip:
     - win
   script:
     - if: unix
       then:
-        - cmake -B build $CMAKE_ARGS -DBUILD_SHARED_LIBS=ON -DP4EST_USE_SYSTEM_SC=ON -DP4EST_BUILD_EXAMPLES=OFF -DP4EST_BUILD_TESTING=ON
+        - cmake -B build $CMAKE_ARGS -DBUILD_SHARED_LIBS=ON -DP4EST_USE_SYSTEM_SC=ON -DP4EST_BUILD_EXAMPLES=OFF -DP4EST_BUILD_TESTING=ON -DP4EST_HAVE_JSON=ON
         - cmake --build build --parallel
         - cmake --install build
         - cd build; ctest --output-on-failure
@@ -27,6 +27,7 @@ requirements:
     - ${{ stdlib('c') }}
     - cmake
     - make
+    - pkgconfig # only needed to find jansson, brought by libsc as long as it is not build with cmake
 
   host:
     - if: unix
