@@ -27,6 +27,7 @@ requirements:
     - ${{ stdlib('c') }}
     - cmake
     - make
+    - pkgconfig # only needed to find jansson, brought by libsc as long as it is not build with cmake
 
   host:
     - if: unix
