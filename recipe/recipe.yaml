@@ -1,5 +1,5 @@
 context:
-  version: "2.8.7"
+  version: "2.8.8"
 
 package:
   name: p4est
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/cburstedde/p4est/releases/download/v${{ version }}/p4est-${{ version }}.tar.gz
-  sha256: 0A1E912F3529999CA6D62FEE335D51F24B5650B586E95A03EF39EBF73936D7F4
+  sha256: 1ac49b9ff6d73d4fe6a4bea3a90f01330b98115e7371f02b4620494c40757196
 
 build:
-  number: 1
+  number: 0
   skip:
     - win
   script:
@@ -35,7 +35,7 @@ requirements:
         - openmpi-mpicc
     - libsc
     - zlib
-    
+
   run_exports:
     - ${{ pin_subpackage('p4est', upper_bound='x.x.x') }}
 
